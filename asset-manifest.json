@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/valorant-roulette/static/css/main.379cc04b.css",
+    "main.js": "/valorant-roulette/static/js/main.a44b62ad.js",
+    "static/media/portal.jpeg": "/valorant-roulette/static/media/portal.5f9cb63726220a6aa07d.jpeg",
+    "index.html": "/valorant-roulette/index.html",
+    "main.379cc04b.css.map": "/valorant-roulette/static/css/main.379cc04b.css.map",
+    "main.a44b62ad.js.map": "/valorant-roulette/static/js/main.a44b62ad.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.379cc04b.css",
+    "static/js/main.a44b62ad.js"
+  ]
+}
