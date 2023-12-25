@@ -55,7 +55,6 @@ const pics = {
   "iso": iso,
   "phoenix": phoenix,
 };
-console.log(pics['jett'])
 const data = {
   "smokes": [
     "astra",
@@ -188,7 +187,6 @@ function App() {
             <div className='close' onClick={handleCloseAgents}>x</div>
             <div className='agents'>
               {team.map((agent) => {
-                console.log(agent); // Optional: You can keep or remove the console.log as needed
                 return (<div className='agent'>
                   <img src={pics[agent]} alt={`${agent}`}></img>
 
