@@ -32,29 +32,30 @@ const iso = process.env.PUBLIC_URL + '/icons/iso.jpeg'
 const phoenix = process.env.PUBLIC_URL + '/icons/pheonix.jpeg'
 
 const pics = {
-  "brimstone": brimstone,
-  "viper": viper,
-  "harbor": harbor,
-  "astra": astra,
-  "omen": omen,
-  "breach": breach,
-  "kay0": kay0,
-  "skye": skye,
-  "sova": sova,
-  "fade": fade,
-  "chamber": chamber,
-  "cypher": cypher,
-  "sage": sage,
-  "killjoy": killjoy,
-  "deadlock": deadlock,
-  "neon": neon,
-  "jett": jett,
-  "raze": raze,
-  "yoru": yoru,
-  "reyna": reyna,
-  "iso": iso,
-  "phoenix": phoenix,
-};
+  "brimstone": [brimstone, 'https://www.pinterest.com/pin/8092474323017466/'],
+  "viper": [viper, 'https://www.pinterest.com/pin/281543720323733/'],
+  "harbor": [harbor, 'https://www.pinterest.com/pin/822610688207606570/'],
+  "astra": [astra, 'https://www.pinterest.com/pin/30328997480904900/'],
+  "omen": [omen, 'https://www.pinterest.com/pin/34199278416554324/'],
+  "breach": [breach, 'https://www.pinterest.com/pin/155092780909383288/'],
+  "kay0": [kay0, 'https://www.pinterest.com/pin/155092780911595830/'],
+  "skye": [skye, 'https://www.pinterest.com/pin/30328997481058498/'],
+  "sova": [sova, 'https://www.pinterest.com/pin/618682067585769602/'],
+  "fade": [fade, 'https://www.pinterest.com/pin/27303141482849838/'],
+  "chamber": [chamber, 'https://www.pinterest.com/pin/11259067809050296/'],
+  "cypher": [cypher, 'https://www.pinterest.com/pin/351140102211310746/'],
+  "sage": [sage, 'https://www.pinterest.com/pin/369295238205400688/'],
+  "killjoy": [killjoy, 'https://www.pinterest.com/pin/24558760462291038/'],
+  "deadlock": [deadlock, 'https://www.pinterest.com/pin/39406565482722116/'],
+  "neon": [neon, 'https://www.pinterest.com/pin/1829656092492980/'],
+  "jett": [jett, 'https://www.pinterest.com/pin/322077810867303859/'],
+  "raze": [raze, 'https://www.pinterest.com/pin/6333255721502615/'],
+  "yoru": [yoru, 'https://www.pinterest.com/pin/25684660369578218/'],
+  "reyna": [reyna, 'https://www.pinterest.com/pin/10696117857546075/'],
+  "iso": [iso, 'https://www.pinterest.com/pin/85779567896485129/'],
+  "phoenix": [phoenix, 'https://www.pinterest.com/pin/454722893641388202/'],
+}
+
 const data = {
   "smokes": [
     "astra",
@@ -172,7 +173,13 @@ function App() {
     fetchTeam()
   }, [reRender])
 
+  const navigateToLink = (agent) => {
+    // Use window.location.href to navigate to the specified link
+    // window.location.href = pics[agent][1];
+    window.open(pics[agent][1], '_blank');
 
+    // console.log(pics[agent][1])
+  };
 
 
   return (
@@ -186,15 +193,20 @@ function App() {
 
             <div className='close' onClick={handleCloseAgents}>x</div>
             <div className='agents'>
-              {team.map((agent) => {
-                return (<div className='agent'>
-                  <img src={pics[agent]} alt={`${agent}`}></img>
+              {team && team.map((agent) => {
+                const agentData = pics[agent];
 
-                  <span>{agent}</span>
-                </div>); // Make sure to return the JSX element
-              })
+                if (agentData && agentData.length > 0) {
+                  return (
+                    <div className='agent' key={agent}>
+                      <img src={agentData[0]} alt={agent} onClick={() => navigateToLink(agent)} />
+                      <span>{agent}</span>
+                    </div>
+                  );
+                }
 
-              }
+                return null; // Return null if data is not available
+              })}
             </div>
             <button className='generator' onClick={handleRender}>New Team</button>
 
@@ -206,7 +218,7 @@ function App() {
             <div className='close' onClick={handleCloseAgents}>x</div>
             <div className='agentmax' >
 
-              <img src={pics[Agent]} className='image'></img>
+              <img src={pics[Agent][0]} className='image' onClick={() => navigateToLink(Agent)}></img>
               {Agent}</div>
             <button className='generator' onClick={handleRender}>New Agent</button>
 
