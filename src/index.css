@@ -8,6 +8,8 @@ html {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  overflow: hidden;
+
 
 
   font-family: Arial, sans-serif;
@@ -16,6 +18,8 @@ html {
   background-color: rgb(50, 50, 61);
   width: 100%;
   height: 100%;
+
+
 
 }
 
@@ -26,6 +30,8 @@ select {
   padding: 10px;
   margin-bottom: 10px;
   box-sizing: border-box;
+  min-width: fit-content;
+  min-height: fit-content;
 }
 
 @media screen and (max-width: 1000px) {
@@ -35,13 +41,15 @@ select {
 }
 
 .header {
+
   display: flex;
   position: absolute;
-  padding: 2px;
+
+  padding-top: 10px;
   /* margin-bottom: 10px; */
   flex-direction: row;
   align-items: center;
-  opacity: .9;
+  opacity: .99;
   width: 100%;
   font-size: 3rem;
   height: 14vh;
@@ -64,7 +72,10 @@ select {
 .container {
   max-width: 100%;
   margin: auto;
-  overflow: hidden;
+  min-width: fit-content;
+  min-height: fit-content;
+
+
   position: absolute;
   width: 100%;
   height: 100%;
@@ -84,12 +95,27 @@ select {
   justify-content: center;
   resize: none;
 
+
+  /* Enable scrolling for the overlay */
+  padding-right: 17px;
+  padding-bottom: 17px;
+
+  min-width: max-content;
+  min-height: max-content;
+  /* Width of the system scrollbar (adjust as needed) */
+  /* background-color: transparent; */
+  /* Set the overlay background color */
+  /* z-index: 9999; */
+  /* Ensure the overlay is above other content */
+
+
 }
 
 
 
 
 .option {
+
   display: flex;
   background-color: rgb(41 30 52 / 72%);
   width: 37vh;
@@ -107,6 +133,7 @@ select {
   margin: 30px;
   overflow: hidden;
   resize: none;
+
 
 }
 
@@ -151,13 +178,14 @@ select {
   max-width: max-content;
   min-width: -moz-fit-content;
   min-width: fit-content;
-  min-height: 54vh;
-  max-height: 47vh;
+  min-height: 250px;
+  max-height: 300%;
   position: absolute;
   bottom: 16vh;
   resize: block;
 
-
+  min-width: fit-content;
+  min-height: fit-content;
 }
 
 
@@ -186,6 +214,8 @@ select {
   position: absolute;
   bottom: 10vh;
   resize: none;
+  min-width: fit-content;
+  min-height: 600px;
 
 }
 
@@ -201,16 +231,13 @@ select {
 }
 
 .agent {
-  flex: 1;
-
+  flex: 1 1;
   color: white;
-
-
   display: flex;
   max-height: 35vh;
   padding: 2px;
-  min-height: 35vh;
-  width: 23vw;
+  /* min-height: 35vh; */
+  /* width: 23vw; */
   border-radius: 9px;
   flex-direction: column;
   flex-wrap: wrap;
@@ -229,7 +256,10 @@ select {
   overflow: hidden;
   max-width: 295px;
   width: 295px;
+  height: 34vh;
+  /* min-width: fit-content; */
   min-width: fit-content;
+  min-height: 228px;
 
 }
 
@@ -247,6 +277,8 @@ img {
   box-shadow: 0px 0px 20px 4px #070723;
   border-radius: inherit;
   opacity: 75%;
+  min-width: fit-content;
+  min-height: fit-content;
 
 }
 
@@ -256,7 +288,6 @@ img {
   border: none;
   width: 24vh;
   height: 6vh;
-  min-width: fit-content;
   min-height: 6vh;
   flex-direction: row;
   justify-content: center;
@@ -270,7 +301,10 @@ img {
   user-select: none;
   border-radius: 9px;
   overflow: hidden;
-  min-width: fit-content;
+  min-width: 160px;
+  min-height: 40px;
+
+
 
 
 }
@@ -300,8 +334,8 @@ img {
   align-self: flex-end;
   margin-right: 20px;
   /* margin-top: 11px; */
-  min-width: fit-content;
-
+  min-width: 50px;
+  min-height: 40px;
 }
 
 .close:hover {
@@ -313,9 +347,7 @@ img {
 .agentmax {
   flex: 1;
   display: flex;
-  max-height: 35vh;
   padding: 2px;
-  min-height: 35vh;
   flex-direction: column;
   flex-wrap: wrap;
   align-content: center;
@@ -328,11 +360,7 @@ img {
   will-change: transform;
   transition: transform 0.1s ease;
   overflow: hidden;
-  max-width: 19vw;
-  min-width: -moz-fit-content;
-  min-width: fit-content;
-  min-height: 47vh;
-  min-width: 48vh;
+
 }
 
 .agentmax:hover {
