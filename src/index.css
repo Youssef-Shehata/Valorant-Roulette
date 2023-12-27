@@ -162,21 +162,27 @@ select {
 
 .agents-container {
   animation: fadeIn .8s ease;
-  background-color: #18182fb0;
-  bottom: 16vh;
-  max-height: 300%;
-  /* max-width: -webkit-max-content; */
-  max-width: max-content;
-  /* min-height: 250px; */
-  /* min-height: -webkit-fit-content; */
-  min-height: -moz-fit-content;
-  min-height: fit-content;
-  min-width: -moz-fit-content;
-  /* min-width: -webkit-fit-content; */
-  min-width: fit-content;
+  display: flex;
   padding: 19px;
-  resize: block;
+  background-color: rgb(24, 24, 47, 0.69);
+  border-radius: 28px;
+  box-shadow: 0px 0px 10px 5px #0b0b18;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-items: center;
+  overflow: hidden;
+  grid-gap: 33px;
+  scroll-behavior: smooth;
+  will-change: opacity;
   transition: opacity .8s ease;
+  max-width: max-content;
+  max-height: 300%;
+  position: absolute;
+  bottom: 16vh;
+  resize: block;
+
+  min-width: fit-content;
+  min-height: fit-content;
 }
 
 
