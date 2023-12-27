@@ -162,30 +162,21 @@ select {
 
 .agents-container {
   animation: fadeIn .8s ease;
-  display: flex;
-  padding: 19px;
-  background-color: rgb(24, 24, 47, 0.69);
-  border-radius: 28px;
-  box-shadow: 0px 0px 10px 5px #0b0b18;
-  flex-direction: column;
-  flex-wrap: nowrap;
-  align-items: center;
-  overflow: hidden;
-  grid-gap: 33px;
-  scroll-behavior: smooth;
-  will-change: opacity;
-  transition: opacity .8s ease;
-  max-width: max-content;
-  min-width: -moz-fit-content;
-  min-width: fit-content;
-  min-height: 250px;
-  max-height: 300%;
-  position: absolute;
+  background-color: #18182fb0;
   bottom: 16vh;
-  resize: block;
-
-  min-width: fit-content;
+  max-height: 300%;
+  /* max-width: -webkit-max-content; */
+  max-width: max-content;
+  /* min-height: 250px; */
+  /* min-height: -webkit-fit-content; */
+  min-height: -moz-fit-content;
   min-height: fit-content;
+  min-width: -moz-fit-content;
+  /* min-width: -webkit-fit-content; */
+  min-width: fit-content;
+  padding: 19px;
+  resize: block;
+  transition: opacity .8s ease;
 }
 
 
@@ -207,16 +198,14 @@ select {
   scroll-behavior: smooth;
   will-change: opacity;
   transition: opacity 1s ease;
-  min-width: 54vh;
-  min-height: 66vh;
-  max-width: 200px;
-  max-height: 100px;
+
   position: absolute;
   bottom: 10vh;
   resize: none;
   min-width: fit-content;
-  min-height: 600px;
-
+  max-height: 300%;
+  min-height: fit-content;
+  max-width: max-content;
 }
 
 .agents {
@@ -376,4 +365,5 @@ img {
   border-radius: 17px;
   min-width: 334px;
   width: 384px;
+  min-height: 363px;
 }
