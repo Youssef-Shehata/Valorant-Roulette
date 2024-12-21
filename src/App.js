@@ -231,8 +231,8 @@ function App() {
 
 
                 }
-                {optionMenu && <div className='option' onClick={handleRandomTeam}>Random Team </div>}
-                {optionMenu && <div className='option' onClick={handleRandomAgent}>Random Agent </div>}
+                {optionMenu && <div className='option' onClick={handleRandomTeam}>Team</div>}
+                {optionMenu && <div className='option' onClick={handleRandomAgent}>Agent</div>}
 
 
             </div >
