@@ -1,14 +1,14 @@
 {
   "files": {
-    "main.css": "/Valorant-Roulette/static/css/main.923d9dc9.css",
-    "main.js": "/Valorant-Roulette/static/js/main.b90ed679.js",
+    "main.css": "/Valorant-Roulette/static/css/main.bee9d9e1.css",
+    "main.js": "/Valorant-Roulette/static/js/main.131dc57a.js",
     "static/media/portal.jpeg": "/Valorant-Roulette/static/media/portal.5f9cb63726220a6aa07d.jpeg",
     "index.html": "/Valorant-Roulette/index.html",
-    "main.923d9dc9.css.map": "/Valorant-Roulette/static/css/main.923d9dc9.css.map",
-    "main.b90ed679.js.map": "/Valorant-Roulette/static/js/main.b90ed679.js.map"
+    "main.bee9d9e1.css.map": "/Valorant-Roulette/static/css/main.bee9d9e1.css.map",
+    "main.131dc57a.js.map": "/Valorant-Roulette/static/js/main.131dc57a.js.map"
   },
   "entrypoints": [
-    "static/css/main.923d9dc9.css",
-    "static/js/main.b90ed679.js"
+    "static/css/main.bee9d9e1.css",
+    "static/js/main.131dc57a.js"
   ]
 }
