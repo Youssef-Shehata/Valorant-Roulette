@@ -1,252 +1,309 @@
-import React, { useState, useEffect } from 'react';
+// App.js
+import { useState, useEffect, useCallback } from 'react';
 
+const MAPS = ["ascent", "sunset", "lotus", "pearl", "fracture", "breeze", "icebox", "bind", "haven", "split", "abyss"]
 
+const MAP_BASED = {
+    ascent: {
+        smokes: ["astra", "brimstone", "omen", "clove"],
+        initiators: ["breach", "teho", "kay0", "skye", "sova", "fade"],
+        sentinels: ["chamber", "cypher", "killjoy", "sage", "deadlock", "vyse"],
+        duelists: ["jett", "phoenix", "raze", "reyna", "yoru", "iso"]
+    },
+    sunset: {
+        smokes: ["astra", "brimstone", "omen", "clove"],
+        initiators: ["breach", "teho", "kay0", "skye", "sova", "fade"],
+        sentinels: ["chamber", "cypher", "killjoy", "sage", "deadlock", "vyse"],
+        duelists: ["jett", "neon", "phoenix", "raze", "reyna", "yoru", "iso"]
+    },
 
-const brimstone = process.env.PUBLIC_URL + '/icons/brimstone.jpeg'
-const viper = process.env.PUBLIC_URL + '/icons/viper.jpeg'
-const harbor = process.env.PUBLIC_URL + '/icons/harbor.jpeg'
-const astra = process.env.PUBLIC_URL + '/icons/astra.jpeg'
-const omen = process.env.PUBLIC_URL + '/icons/omen.jpeg'
+    lotus: {
+        smokes: ["brimstone", "omen", "clove"],
+        initiators: ["breach", "teho", "skye", "sova"],
+        sentinels: ["chamber", "cypher", "killjoy", "sage", "deadlock"],
+        duelists: ["jett", "neon", "raze", "reyna", "iso"]
+    },
 
+    pearl: {
+        smokes: ["astra", "brimstone", "harbor", "clove"],
+        initiators: ["breach", "teho", "fade"],
+        sentinels: ["chamber", "cypher", "killjoy", "sage", "deadlock"],
+        duelists: ["jett", "phoenix", "raze", "reyna", "iso"]
+    },
 
-const breach = process.env.PUBLIC_URL + '/icons/breach.jpeg'
-const kay0 = process.env.PUBLIC_URL + '/icons/kay0.jpeg'
-const skye = process.env.PUBLIC_URL + '/icons/skye.jpeg'
-const sova = process.env.PUBLIC_URL + '/icons/sova.jpeg'
-const fade = process.env.PUBLIC_URL + '/icons/fade.jpeg'
+    fracture: {
+        smokes: ["brimstone", "viper", "harbor", "omen", "clove"],
+        initiators: ["breach", "teho", "kay0", "skye"],
+        sentinels: ["chamber", "cypher", "killjoy", "sage"],
+        duelists: ["jett", "neon", "phoenix", "raze", "reyna", "yoru", "iso"]
+    },
 
+    breeze: {
+        smokes: ["brimstone", "viper", "harbor", "omen", "clove"],
+        initiators: ["kay0", "skye", "sova",],
+        sentinels: ["chamber", "cypher", "killjoy", "sage",],
+        duelists: ["jett", "neon", "raze", "reyna", "yoru", "iso"]
+    },
 
+    icebox: {
+        smokes: ["astra", "brimstone", "omen", "clove"],
+        initiators: ["breach", "teho", "skye", "sova",],
+        sentinels: ["chamber", "cypher", "killjoy", "sage", "deadlock",],
+        duelists: ["jett", "neon", "phoenix", "raze", "reyna", "iso"]
+    },
 
-const chamber = process.env.PUBLIC_URL + '/icons/chamber.jpeg'
-const cypher = process.env.PUBLIC_URL + '/icons/cypher.jpeg'
-const sage = process.env.PUBLIC_URL + '/icons/sage.jpeg'
-const killjoy = process.env.PUBLIC_URL + '/icons/killjoy.jpeg'
-const deadlock = process.env.PUBLIC_URL + '/icons/deadlock.jpeg'
+    bind: {
+        smokes: ["astra", "brimstone", "omen", "clove"],
+        initiators: ["breach", "teho", "skye", "sova",],
+        sentinels: ["chamber", "cypher", "killjoy", "sage", "deadlock",],
+        duelists: ["jett", "neon", "phoenix", "raze", "reyna", "yoru", "iso"]
+    },
 
-const neon = process.env.PUBLIC_URL + '/icons/neon.jpeg'
-const jett = process.env.PUBLIC_URL + '/icons/jett.jpeg'
-const raze = process.env.PUBLIC_URL + '/icons/raze.jpeg'
-const yoru = process.env.PUBLIC_URL + '/icons/yoru.jpeg'
-const reyna = process.env.PUBLIC_URL + '/icons/reyna.jpeg'
-const iso = process.env.PUBLIC_URL + '/icons/iso.jpeg'
-const phoenix = process.env.PUBLIC_URL + '/icons/pheonix.jpeg'
-const clove= process.env.PUBLIC_URL + '/icons/clove.jpeg'
-const vyse= process.env.PUBLIC_URL + '/icons/vyse.jpeg'
+    haven: {
+        smokes: ["astra", "brimstone", "omen", "clove"],
+        initiators: ["breach", "teho", "skye", "sova", "fade"],
+        sentinels: ["chamber", "cypher", "killjoy", "sage", "deadlock"],
+        duelists: ["jett", "neon", "phoenix", "raze", "reyna", "yoru", "iso"]
+    },
 
-const pics = {
-    "brimstone": [brimstone, 'https://www.pinterest.com/pin/8092474323017466/'],
-    "viper": [viper, 'https://www.pinterest.com/pin/281543720323733/'],
-    "harbor": [harbor, 'https://www.pinterest.com/pin/822610688207606570/'],
-    "astra": [astra, 'https://www.pinterest.com/pin/30328997480904900/'],
-    "omen": [omen, 'https://www.pinterest.com/pin/34199278416554324/'],
-    "breach": [breach, 'https://www.pinterest.com/pin/155092780909383288/'],
-    "kay0": [kay0, 'https://www.pinterest.com/pin/155092780911595830/'],
-    "skye": [skye, 'https://www.pinterest.com/pin/30328997481058498/'],
-    "sova": [sova, 'https://www.pinterest.com/pin/618682067585769602/'],
-    "fade": [fade, 'https://www.pinterest.com/pin/27303141482849838/'],
-    "chamber": [chamber, 'https://www.pinterest.com/pin/11259067809050296/'],
-    "cypher": [cypher, 'https://www.pinterest.com/pin/351140102211310746/'],
-    "sage": [sage, 'https://www.pinterest.com/pin/369295238205400688/'],
-    "killjoy": [killjoy, 'https://www.pinterest.com/pin/24558760462291038/'],
-    "deadlock": [deadlock, 'https://www.pinterest.com/pin/39406565482722116/'],
-    "neon": [neon, 'https://www.pinterest.com/pin/1829656092492980/'],
-    "jett": [jett, 'https://www.pinterest.com/pin/322077810867303859/'],
-    "raze": [raze, 'https://www.pinterest.com/pin/6333255721502615/'],
-    "yoru": [yoru, 'https://www.pinterest.com/pin/25684660369578218/'],
-    "reyna": [reyna, 'https://www.pinterest.com/pin/10696117857546075/'],
-    "iso": [iso, 'https://www.pinterest.com/pin/85779567896485129/'],
-    "phoenix": [phoenix, 'https://www.pinterest.com/pin/454722893641388202/'],
-    "clove": [clove, 'https://www.pinterest.com/pin/582371795603234556/'],
-    "vyse": [vyse, 'https://www.pinterest.com/pin/745697650834887505/'],
+    split: {
+        smokes: ["astra", "brimstone", "omen", "clove"],
+        initiators: ["breach", "teho", "kay0", "skye", "fade"],
+        sentinels: ["chamber", "cypher", "killjoy", "sage", "deadlock",],
+        duelists: ["jett", "phoenix", "raze", "reyna", "yoru", "iso"]
+    },
+    abyss: {
+        smokes: ["astra", "brimstone", "harbor", "omen", "clove"],
+        initiators: ["breach", "teho", "kay0", "skye", "sova", "fade"],
+        sentinels: ["chamber", "cypher", "killjoy", "sage", "deadlock", "vyse"],
+        duelists: ["jett", "neon", "phoenix", "raze", "reyna", "yoru", "iso"]
+    },
 }
+const AGENT_DATA = {
+    smokes: ["astra", "brimstone", "viper", "harbor", "omen", "clove"],
+    initiators: ["breach", "teho", "kay0", "skye", "sova", "fade"],
+    sentinels: ["chamber", "cypher", "killjoy", "sage", "deadlock", "vyse"],
+    duelists: ["jett", "neon", "phoenix", "raze", "reyna", "yoru", "iso"]
+};
 
-const data = {
-    "smokes": [
-        "astra",
-        "brimstone",
-        "viper",
-        "harbor",
-        "omen",
-        "clove"
-    ],
-    "initiators": [
-        "breach",
-        "kay0",
-        "skye",
-        "sova",
-        "fade"
-    ],
-    "sentinels": [
-        "chamber",
-        "cypher",
-        "killjoy",
-        "sage",
-        "deadlock",
-        "vyse"
-    ],
-    "duelists": [
-        "jett",
-        "neon",
-        "phoenix",
-        "raze",
-        "reyna",
-        "yoru",
-        "iso"
-    ]
-}
+const MAP_ASSETS = Object.fromEntries(
+    Object.entries({
+        ascent: 'ascent.jpeg',
+        sunset: 'sunset.jpeg',
+        lotus: 'lotus.jpeg',
+        pearl: 'pearl.jpeg',
+        fracture: 'fracture.jpeg',
+        breeze: 'breeze.jpeg',
+        icebox: 'icebox.jpeg',
+        bind: 'bind.jpeg',
+        haven: 'haven.jpeg',
+        split: 'split.jpeg',
+        abyss: 'abyss.jpeg'
+    }).map(([name, img]) => [
+        name,
+        {
+            image: `${process.env.PUBLIC_URL}/icons/maps/${img}`,
+            //link: `https://www.pinterest.com/pin/${Math.random().toString(36).slice(2)}/`
+        }
+    ])
+);
 
+const AGENT_ASSETS = Object.fromEntries(
+    Object.entries({
+        brimstone: 'brimstone.jpeg',
+        viper: 'viper.jpeg',
+        harbor: 'harbor.jpeg',
+        astra: 'astra.jpeg',
+        omen: 'omen.jpeg',
+        breach: 'breach.jpeg',
+        teho: 'teho.jpeg',
+        kay0: 'kay0.jpeg',
+        skye: 'skye.jpeg',
+        sova: 'sova.jpeg',
+        fade: 'fade.jpeg',
+        chamber: 'chamber.jpeg',
+        cypher: 'cypher.jpeg',
+        sage: 'sage.jpeg',
+        killjoy: 'killjoy.jpeg',
+        deadlock: 'deadlock.jpeg',
+        neon: 'neon.jpeg',
+        jett: 'jett.jpeg',
+        raze: 'raze.jpeg',
+        yoru: 'yoru.jpeg',
+        reyna: 'reyna.jpeg',
+        iso: 'iso.jpeg',
+        phoenix: 'phoenix.jpeg',
+        clove: 'clove.jpeg',
+        vyse: 'vyse.jpeg'
+    }).map(([name, img]) => [
+        name,
+        {
+            image: `${process.env.PUBLIC_URL}/icons/agents/${img}`,
+            //link: `https://www.pinterest.com/pin/${Math.random().toString(36).slice(2)}/`
+        }
+    ])
+);
 
-const generateAgent = () => {
-    const agents = Object.keys(pics)
-    const agent = agents[Math.floor(Math.random() * agents.length)]
-    return agent
-}
+const getRandomAgent = () => {
+    const agents = Object.keys(AGENT_ASSETS);
+    return agents[Math.floor(Math.random() * agents.length)];
+};
 
-const generateTeam = (data) => {
-    // const names = ['smokes', 'initiators', 'sentinels', 'duelists']
+const generateTeam = (agentData) => {
+    const roles = Object.entries(agentData).map(([role, agents]) => ({
+        role,
+        agent: agents[Math.floor(Math.random() * agents.length)]
+    }));
 
-    const smokes = data['smokes'];
-    const inits = data['initiators'];
-    const sens = data['sentinels'];
-    const duels = data['duelists'];
+    const duelists = AGENT_DATA.duelists.filter(a => a !== roles.find(r => r.role === 'duelists')?.agent);
+    const fifth = duelists[Math.floor(Math.random() * duelists.length)];
 
-    const smoker = smokes[Math.floor(Math.random() * smokes.length)];
-    const initiator = inits[Math.floor(Math.random() * inits.length)];
-    const sentinel = sens[Math.floor(Math.random() * sens.length)];
-    const d1 = Math.floor(Math.random() * duels.length);
-    const duelist1 = duels[d1]
-    const team = [smoker, initiator, sentinel, duelist1];
-
-
-    let d2 = Math.floor(Math.random() * duels.length);
-
-
-    while (d1 === d2 || duels[d2] in team) {
-        d2 = Math.floor(Math.random() * duels.length);
-    }
-
-    const fifth = duels[d2];
-
-    team.push(fifth)
-
-    const team2 = [];
-    const j = Math.floor(Math.random() * 5);
-
-    for (let i = 0; i < 5; i++) {
-        team2.push(team[(j + i) % 5]);
-    }
-
-    return team2;
-}
-
+    return [...roles.map(r => r.agent), fifth].sort(() => Math.random() - 0.5);
+};
 
 function App() {
-    const [optionMenu, setOptionMenu] = useState(true)
-    const [showTeam, setShowTeam] = useState(false)
+    const [view, setView] = useState('menu');
+    const [currentMap, setMap] = useState('');
+    const [team, setTeam] = useState([]);
+    const [agent, setAgent] = useState('');
 
-    const [showAgent, setShowAgent] = useState(false)
-    const [team, setTeam] = useState([])
-    const [Agent, setAgent] = useState('')
+    const refreshData = useCallback(() => {
+        setTeam(generateTeam(AGENT_DATA));
+        setAgent(getRandomAgent());
+    }, []);
 
-
-    const [reRender, setreRender] = useState(0)
-
-    const handleRandomTeam = () => {
-        setOptionMenu(false)
-        setShowTeam(true)
-    }
-    const handleRandomAgent = () => {
-        setOptionMenu(false)
-        setShowAgent(true)
-    }
-
-
-    const handleRender = () => {
-        setreRender(reRender + 1)
-    }
-
-    const handleCloseAgents = () => {
-        setShowTeam(false)
-        setShowAgent(false)
-        setOptionMenu(true)
-    }
-    useEffect(() => {
-        const fetchTeam = () => {
-            setTeam(generateTeam(data))
-            setAgent(generateAgent())
-        }
-
-        fetchTeam()
-    }, [reRender])
-
-    const navigateToLink = (agent) => {
-        // Use window.location.href to navigate to the specified link
-        // window.location.href = pics[agent][1];
-        window.open(pics[agent][1], '_blank');
-
-        // console.log(pics[agent][1])
-    };
-
+    useEffect(() => { refreshData() }, [refreshData]);
 
     return (
-        <>
-            <div className='header'>Valorant Roulette</div>
+        <div className="app-container">
+            <header className="app-header">
+                <h1>VALORANT ROULETTE</h1>
+                <div className="header-gradient"></div>
+            </header>
 
-            <div className="container" >
-
-                {showTeam &&
-                    <div className='agents-container'>
-
-                        <div className='close' onClick={handleCloseAgents}>x</div>
-                        <div className='agents'>
-                            {team && team.map((agent) => {
-                                const agentData = pics[agent];
-
-                                if (agentData && agentData.length > 0) {
-                                    return (
-                                        <div className='agent' key={agent}>
-                                            <img src={agentData[0]} alt={agent} onClick={() => navigateToLink(agent)} />
-                                        </div>
-                                    );
-                                }
-
-                                return null; // Return null if data is not available
-                            })}
+            <main className="main-content">
+                {view === 'menu' && (
+                    <div className="role-selection">
+                        <div
+                            className="role-card "
+                            onClick={() => setView('team')}
+                        >
+                            <h2>Random Team</h2>
+                            <p>Generate complete team composition</p>
                         </div>
-                        <button className='generator' onClick={handleRender}>New Team</button>
+
+                        <div
+                            className="role-card "
+                            onClick={() => setView('agent')}
+                        >
+                            <h2>Random Agent</h2>
+                            <p>Get single random agent</p>
+                        </div>
+                        <div
+                            className="role-card "
+                            onClick={() => setView('map')}
+                        >
+                            <h2>Map Based</h2>
+                            <p>Get a random team based on the map</p>
+                        </div>
+                    </div>
+                )}
+
+
+                {view == 'map' && (
+                    <div className={`results-container ${view}`}>
+                        <button
+                            className="close-button"
+                            onClick={() => setView('menu')}
+                        >
+                            &times;
+                        </button>
+
+                        <div className="team-grid">
+                            {MAPS.map((map) => (
+                                <MapCard key={map} map={map} setMap={setMap} setView={setView} />
+                            ))}
+                        </div>
+
+                        <div style={{ paddingTop: '2rem', fontSize: '20px' }}>
+                            Generated teams are based on the owner's taste, and follow no industry standards ( I don't watch VCT ).
+                        </div>
 
                     </div>
+                )}
+                {view !== 'menu' && view != 'map' && (
+                    <div className={`results-container ${view}`}>
+                        <button
+                            className="close-button"
+                            onClick={() => setView('menu')}
+                        >
+                            &times;
+                        </button>
 
-                }{
-                    showAgent &&
-                    <div className='agent-container'>
-                        <div className='close' onClick={handleCloseAgents}>x</div>
-                        <div className='agentmax' >
-
-                            <img src={pics[Agent][0]} className='image' onClick={() => navigateToLink(Agent)}></img>
+                        {view === 'team' && (
+                            <div className="team-grid">
+                                {team.map((agent) => (
+                                    <AgentCard key={agent} agent={agent} />
+                                ))}
                             </div>
-                        <button className='generator' onClick={handleRender}>New Agent</button>
+                        )}
 
+                        {view === 'map-team' && (
+                            <>
+                                <div className='map-header'>{currentMap.toUpperCase()}</div>
+                                <div className="team-grid">
+                                    {generateTeam(MAP_BASED[currentMap]).map((agent) => (
+                                        <AgentCard key={agent} agent={agent} />
+                                    ))}
+                                </div>
+                            </>
+                        )}
+                        {view === 'agent' && <AgentCard agent={agent} fullSize />}
+
+                        <button
+                            className="refresh-button"
+                            onClick={refreshData}
+                        >
+                            Generate New
+                        </button>
                     </div>
-
-
-                }
-                {optionMenu && <div className='option' onClick={handleRandomTeam}>Team</div>}
-                {optionMenu && <div className='option' onClick={handleRandomAgent}>Agent</div>}
-
-
-            </div >
-
-
-
-
-
-
-
-
-
-        </>
+                )}
+            </main>
+        </div>
     );
 }
+
+const AgentCard = ({ agent, fullSize }) => {
+    const { image } = AGENT_ASSETS[agent];
+
+    return (
+        <div className={`agent-card ${fullSize ? 'full' : ''}`}>
+            <img
+                src={image}
+                alt={agent}
+            />
+            <div className="agent-name">{agent.toUpperCase()}</div>
+        </div>
+    );
+};
+const MapCard = ({ map, fullSize, setMap, setView }) => {
+    const { image } = MAP_ASSETS[map];
+
+    return (
+        <div className={`agent-card ${fullSize ? 'full' : ''}`}>
+            <img
+                src={image}
+                alt={map}
+                onClick={() => {
+                    setMap(map)
+                    setView('map-team')
+                }}
+
+            />
+            <div className="agent-name">{map.toUpperCase()}</div>
+        </div>
+    );
+};
+
 
 export default App;
