@@ -6,5 +6,9 @@
 ![](public/Screenshots/home1.png)
 
 
-### you can also pick a random agent just for you!
+### You can also get map-dependant picks, so you dont end up with sova on split ;(
+![](public/Screenshots/maps.png)
+
+
+### And finally, you pick a random agent just for you!
 ![](public/Screenshots/home2.png)
