@@ -6,84 +6,84 @@ const MAPS = ["ascent", "sunset", "lotus", "pearl", "fracture", "breeze", "icebo
 const MAP_BASED = {
     ascent: {
         smokes: ["astra", "brimstone", "omen", "clove"],
-        initiators: ["breach", "teho", "kay0", "skye", "sova", "fade"],
+        initiators: ["breach", "tejo", "kay0", "skye", "sova", "fade"],
         sentinels: ["chamber", "cypher", "killjoy", "sage", "deadlock", "vyse"],
-        duelists: ["jett", "phoenix", "raze", "reyna", "yoru", "iso"]
+        duelists: ["jett", "phoenix", "raze", "reyna", "yoru", "iso", "waylay"]
     },
     sunset: {
         smokes: ["astra", "brimstone", "omen", "clove"],
-        initiators: ["breach", "teho", "kay0", "skye", "sova", "fade"],
+        initiators: ["breach", "tejo", "kay0", "skye", "sova", "fade"],
         sentinels: ["chamber", "cypher", "killjoy", "sage", "deadlock", "vyse"],
-        duelists: ["jett", "neon", "phoenix", "raze", "reyna", "yoru", "iso"]
+        duelists: ["jett", "neon", "phoenix", "raze", "reyna", "yoru", "iso", "waylay"]
     },
 
     lotus: {
         smokes: ["brimstone", "omen", "clove"],
-        initiators: ["breach", "teho", "skye", "sova"],
+        initiators: ["breach", "tejo", "skye", "sova"],
         sentinels: ["chamber", "cypher", "killjoy", "sage", "deadlock"],
-        duelists: ["jett", "neon", "raze", "reyna", "iso"]
+        duelists: ["jett", "neon", "raze", "reyna", "iso", "waylay"]
     },
 
     pearl: {
         smokes: ["astra", "brimstone", "harbor", "clove"],
-        initiators: ["breach", "teho", "fade"],
+        initiators: ["breach", "tejo", "fade"],
         sentinels: ["chamber", "cypher", "killjoy", "sage", "deadlock"],
-        duelists: ["jett", "phoenix", "raze", "reyna", "iso"]
+        duelists: ["jett", "phoenix", "raze", "reyna", "iso", "waylay"]
     },
 
     fracture: {
         smokes: ["brimstone", "viper", "harbor", "omen", "clove"],
-        initiators: ["breach", "teho", "kay0", "skye"],
+        initiators: ["breach", "tejo", "kay0", "skye"],
         sentinels: ["chamber", "cypher", "killjoy", "sage"],
-        duelists: ["jett", "neon", "phoenix", "raze", "reyna", "yoru", "iso"]
+        duelists: ["jett", "neon", "phoenix", "raze", "reyna", "yoru", "iso", "waylay"]
     },
 
     breeze: {
         smokes: ["brimstone", "viper", "harbor", "omen", "clove"],
         initiators: ["kay0", "skye", "sova",],
         sentinels: ["chamber", "cypher", "killjoy", "sage",],
-        duelists: ["jett", "neon", "raze", "reyna", "yoru", "iso"]
+        duelists: ["jett", "neon", "raze", "reyna", "yoru", "iso", "waylay"]
     },
 
     icebox: {
         smokes: ["astra", "brimstone", "omen", "clove"],
-        initiators: ["breach", "teho", "skye", "sova",],
+        initiators: ["breach", "tejo", "skye", "sova",],
         sentinels: ["chamber", "cypher", "killjoy", "sage", "deadlock",],
-        duelists: ["jett", "neon", "phoenix", "raze", "reyna", "iso"]
+        duelists: ["jett", "neon", "phoenix", "raze", "reyna", "iso", "waylay"]
     },
 
     bind: {
         smokes: ["astra", "brimstone", "omen", "clove"],
-        initiators: ["breach", "teho", "skye", "sova",],
+        initiators: ["breach", "tejo", "skye", "sova",],
         sentinels: ["chamber", "cypher", "killjoy", "sage", "deadlock",],
-        duelists: ["jett", "neon", "phoenix", "raze", "reyna", "yoru", "iso"]
+        duelists: ["jett", "neon", "phoenix", "raze", "reyna", "yoru", "iso", "waylay"]
     },
 
     haven: {
         smokes: ["astra", "brimstone", "omen", "clove"],
-        initiators: ["breach", "teho", "skye", "sova", "fade"],
+        initiators: ["breach", "tejo", "skye", "sova", "fade"],
         sentinels: ["chamber", "cypher", "killjoy", "sage", "deadlock"],
-        duelists: ["jett", "neon", "phoenix", "raze", "reyna", "yoru", "iso"]
+        duelists: ["jett", "neon", "phoenix", "raze", "reyna", "yoru", "iso", "waylay"]
     },
 
     split: {
         smokes: ["astra", "brimstone", "omen", "clove"],
-        initiators: ["breach", "teho", "kay0", "skye", "fade"],
+        initiators: ["breach", "tejo", "kay0", "skye", "fade"],
         sentinels: ["chamber", "cypher", "killjoy", "sage", "deadlock",],
-        duelists: ["jett", "phoenix", "raze", "reyna", "yoru", "iso"]
+        duelists: ["jett", "phoenix", "raze", "reyna", "yoru", "iso", "waylay"]
     },
     abyss: {
         smokes: ["astra", "brimstone", "harbor", "omen", "clove"],
-        initiators: ["breach", "teho", "kay0", "skye", "sova", "fade"],
+        initiators: ["breach", "tejo", "kay0", "skye", "sova", "fade"],
         sentinels: ["chamber", "cypher", "killjoy", "sage", "deadlock", "vyse"],
-        duelists: ["jett", "neon", "phoenix", "raze", "reyna", "yoru", "iso"]
+        duelists: ["jett", "neon", "phoenix", "raze", "reyna", "yoru", "iso", "waylay"]
     },
 }
 const AGENT_DATA = {
     smokes: ["astra", "brimstone", "viper", "harbor", "omen", "clove"],
-    initiators: ["breach", "teho", "kay0", "skye", "sova", "fade"],
+    initiators: ["breach", "tejo", "kay0", "skye", "sova", "fade"],
     sentinels: ["chamber", "cypher", "killjoy", "sage", "deadlock", "vyse"],
-    duelists: ["jett", "neon", "phoenix", "raze", "reyna", "yoru", "iso"]
+    duelists: ["jett", "neon", "phoenix", "raze", "reyna", "yoru", "iso", "waylay"]
 };
 
 const MAP_ASSETS = Object.fromEntries(
@@ -116,7 +116,7 @@ const AGENT_ASSETS = Object.fromEntries(
         astra: 'astra.jpeg',
         omen: 'omen.jpeg',
         breach: 'breach.jpeg',
-        teho: 'teho.jpeg',
+        tejo: 'teho.jpeg',
         kay0: 'kay0.jpeg',
         skye: 'skye.jpeg',
         sova: 'sova.jpeg',
@@ -134,7 +134,8 @@ const AGENT_ASSETS = Object.fromEntries(
         iso: 'iso.jpeg',
         phoenix: 'phoenix.jpeg',
         clove: 'clove.jpeg',
-        vyse: 'vyse.jpeg'
+        vyse: 'vyse.jpeg',
+        waylay: 'waylay.jpeg'
     }).map(([name, img]) => [
         name,
         {
@@ -176,7 +177,7 @@ function App() {
 
     return (
         <div className="app-container">
-            <header className="app-header">
+            <header className="app-header" onClick={() => { setView('menu') }}>
                 <h1>VALORANT ROULETTE</h1>
                 <div className="header-gradient"></div>
             </header>
@@ -214,7 +215,11 @@ function App() {
                     <div className={`results-container ${view}`}>
                         <button
                             className="close-button"
-                            onClick={() => setView('menu')}
+                            onClick={() => {
+                                setView('menu')
+                                setMap('')
+                            }}
+
                         >
                             &times;
                         </button>
